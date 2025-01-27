@@ -53,6 +53,11 @@ const AddNewInterview = () => {
                 createdBy:user?.primaryEmailAddress?.emailAddress,
                 createdAt:moment().format('DD-MM-YYYY')
             }).returning({mockId:MockInterview.mockId});
+            console.log("Inserted Id:",resp);
+            if(resp){
+                setOpenDialog(false)
+            }
+
         }else{
             console.log('Error in generating response')
         }
