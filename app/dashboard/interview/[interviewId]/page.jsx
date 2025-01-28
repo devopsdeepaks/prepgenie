@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Interview() {
+const Interview = () => {
   return (
     <div>Interview</div>
   )
