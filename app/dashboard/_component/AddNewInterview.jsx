@@ -18,6 +18,7 @@ import { LoaderCircle } from 'lucide-react'
 import { useUser } from '@clerk/nextjs'
 import moment from 'moment'
 import { MockInterview } from '@/utils/schema'
+import { useRouter } from 'next/navigation'
 const AddNewInterview = () => {
     const [openDialog, setOpenDialog] = useState(false)
     const [jobPosition, setJobPosition] = useState()
@@ -26,6 +27,7 @@ const AddNewInterview = () => {
     const [loading, setLoading] = useState(false)
     const [jsonResponse, setJsonResponse] = useState([])
     const { user } = useUser()
+    const router = useRouter();
     const onSubmit = async (e) => {
         setLoading(true)
         e.preventDefault()
@@ -43,7 +45,6 @@ const AddNewInterview = () => {
         setJsonResponse(parsedResponse);
 
 
-
         if (parsedResponse) {
             const resp = await db.insert(MockInterview)
                 .values({
@@ -58,6 +59,7 @@ const AddNewInterview = () => {
             console.log("Inserted Id:", resp);
             if (resp) {
                 setOpenDialog(false)
+                router.push(`/dashboard/interview/${resp[0]?.mockId}`);
             }
 
         } else {
