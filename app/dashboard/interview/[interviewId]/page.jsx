@@ -34,15 +34,15 @@ const Interview = ({ params }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="flex flex-col my-5 p-5 rounded-lg border gap-5">
           <h2 className="text-lg">
-            <strong>Job Role/Position:</strong>
+            <strong>Job Role/Position: </strong>
             {interviewData?.jobPosition}
           </h2>
           <h2 className="text-lg">
-            <strong>Job Desc/Tech Stack:</strong>
+            <strong>Job Desc/Tech Stack: </strong>
             {interviewData?.jobDesc}
           </h2>
           <h2 className="text-lg">
-            <strong>Job Experience:</strong>
+            <strong>Job Experience: </strong>
             {interviewData?.jobExperience}
           </h2>
           <div className="p-5 border rounded-lg border-yellow-300 bg-yellow-100">
@@ -82,10 +82,10 @@ const Interview = ({ params }) => {
         </div>
       </div>
       <div className="flex justify-end items-end">
-        <Link href={'/dashboard/interview/'+params.interviewId+'/start'}>
+        <Link href={'/dashboard/interview/' + params.interviewId + '/start'}>
           <Button>Start Interview</Button>
         </Link>
-        </div>
+      </div>
     </div>
   );
 };
