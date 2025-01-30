@@ -90,9 +90,8 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex,interv
         const responseText = await result.response.text(); // ✅ Fix: Await response
         const formattedResponse = responseText.replace('```json', '').replace('```', '').trim();
         
-        console.log("AI Response:", formattedResponse);
         const jsonFeedbackResp = JSON.parse(formattedResponse); // ✅ Fix: Proper declaration
-
+        console.log("JSON Feedback Response:", jsonFeedbackResp);
         console.log("Mock ID:", interviewData?.mockId);
         console.log("User Email:", user?.primaryEmailAddress?.emailAddress);
 
@@ -102,7 +101,7 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex,interv
             setLoading(false);
             return;
         }
-
+        if(jsonFeedbackResp){
         const resp = await db.insert(UserAnswer).values({
             mockIdRef: interviewData?.mockId,
             question: mockInterviewQuestion[activeQuestionIndex]?.question,
@@ -113,6 +112,10 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex,interv
             userEmail: user?.primaryEmailAddress?.emailAddress,
             createdAt: moment().format('DD-MM-YYYY')
         });
+        console.log("Inserted User Answer:", resp);
+    }else {
+        console.log('Error in generating response')
+    }
 
         if (resp) {
             toast.success("User answer recorded successfully!");
