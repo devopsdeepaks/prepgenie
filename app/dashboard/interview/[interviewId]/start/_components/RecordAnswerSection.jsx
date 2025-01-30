@@ -85,12 +85,12 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
             const responseText = await result.response.text(); // ✅ Fix: Await response
             const formattedResponse = responseText.replace('```json', '').replace('```', '').trim();
             const jsonFeedbackResp = JSON.parse(formattedResponse); // ✅ Fix: Proper declaration
-             console.log("JSON Feedback Response:", jsonFeedbackResp);
+            // console.log("JSON Feedback Response:", jsonFeedbackResp);
             // console.log("Mock ID:", interviewData?.mockId);
             // console.log("User Email:", user?.primaryEmailAddress?.emailAddress);
 
             if (!interviewData?.mockId || !user?.primaryEmailAddress?.emailAddress) {
-                console.error("Missing required fields");
+                //console.error("Missing required fields");
                 toast.error("Error: Missing required fields");
                 setLoading(false);
                 return;
@@ -106,7 +106,7 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
                     userEmail: user?.primaryEmailAddress?.emailAddress,
                     createdAt: moment().format('DD-MM-YYYY')
                 });
-                console.log("Inserted User Answer:", resp);
+                //console.log("Inserted User Answer:", resp);
             } else {
                 console.log('Error in generating response')
             }
