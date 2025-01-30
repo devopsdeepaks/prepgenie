@@ -58,8 +58,8 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex,interv
     const updateUserAnswer = async () => {
     setLoading(true);
 
-    console.log("Mock Interview Questions:", mockInterviewQuestion);
-    console.log("Active Question Index:", activeQuestionIndex);
+     console.log("Mock Interview Questions:", mockInterviewQuestion);
+     console.log("Active Question Index:", activeQuestionIndex);
 
     // if (!mockInterviewQuestion || !Array.isArray(mockInterviewQuestion) || mockInterviewQuestion.length === 0) {
     //     console.error("❌ Error: mockInterviewQuestion is empty or not an array!");
@@ -77,7 +77,7 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex,interv
     //     return;
     // }
 
-    console.log("✅ Processing Answer for Question:", questionText);
+    // console.log("✅ Processing Answer for Question:", questionText);
 
 
     const feedbackPrompt = `Question: ${mockInterviewQuestion[activeQuestionIndex]?.question}, 
