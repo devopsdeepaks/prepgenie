@@ -85,9 +85,9 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
             const responseText = await result.response.text(); // ✅ Fix: Await response
             const formattedResponse = responseText.replace('```json', '').replace('```', '').trim();
             const jsonFeedbackResp = JSON.parse(formattedResponse); // ✅ Fix: Proper declaration
-            console.log("JSON Feedback Response:", jsonFeedbackResp);
-            console.log("Mock ID:", interviewData?.mockId);
-            console.log("User Email:", user?.primaryEmailAddress?.emailAddress);
+             console.log("JSON Feedback Response:", jsonFeedbackResp);
+            // console.log("Mock ID:", interviewData?.mockId);
+            // console.log("User Email:", user?.primaryEmailAddress?.emailAddress);
 
             if (!interviewData?.mockId || !user?.primaryEmailAddress?.emailAddress) {
                 console.error("Missing required fields");
