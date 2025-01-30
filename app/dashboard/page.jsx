@@ -1,5 +1,6 @@
 import React from 'react'
 import AddNewInterview from './_component/AddNewInterview'
+import InterviewList from './_component/InterviewList'
 
 const DashboadPage = () => {
     return (
@@ -10,6 +11,9 @@ const DashboadPage = () => {
             <div className='grid grid-cols-1 md:grid-cols-3 my-5 gap-4'>
                 <AddNewInterview /> {/* This appears only on `/dashboard` */}
             </div>
+
+            {/* Previous Questions List  */}
+            <InterviewList />
         </div>
     )
 }

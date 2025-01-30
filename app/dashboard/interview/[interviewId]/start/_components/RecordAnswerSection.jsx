@@ -5,23 +5,24 @@ import React, { useEffect, useState } from 'react';
 import Webcam from 'react-webcam';
 import { Mic } from 'lucide-react';
 import useSpeechToText from 'react-hook-speech-to-text';
-import { toast } from "sonner";
-import { Toaster } from 'sonner'; 
+import { toast } from 'sonner';
+import { Toaster } from 'sonner';
 import { chatSession } from '@/utils/GeminiAiModal';
 import { UserAnswer } from '@/utils/schema';
 import { useUser } from '@clerk/nextjs';
 import moment from 'moment';
 import { db } from '@/utils/db';
 
-const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex,interviewData }) => { // ✅ Fix: Props should be destructured
+const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, interviewData }) => { // ✅ Fix: Props should be destructured
     const [userAnswer, setUserAnswer] = useState('');
-    const {user}=useUser();
+    const { user } = useUser();
     const [loading, setLoading] = useState(false);
     const {
         error,
         interimResult,
         isRecording,
         results,
+        setResults,
         startSpeechToText,
         stopSpeechToText,
     } = useSpeechToText({
@@ -31,103 +32,97 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex,interv
 
     useEffect(() => {
         if (results?.length > 0) {
-            setUserAnswer(prevAns => prevAns + results[results.length - 1]?.transcript + " ");
+            // console.log("Speech-to-text results:", results);
+            setUserAnswer(prevAns =>
+
+                prevAns + results[results.length - 1]?.transcript + " "
+            );
+            // console.log("User Answer inside use effect:", userAnswer);
         }
     }, [results]);
+    // console.log("User Answer outside use effect:", userAnswer);
 
     useEffect(() => {
-       if(!isRecording && userAnswer.length>10){
-           updateUserAnswer();
-       }
-    },[userAnswer])
+        // console.log("Updated User Answer:", userAnswer);  // Log after state update
+    }, [userAnswer]);  // This will be triggered every time userAnswer is updated
+
+
+
+    useEffect(() => {
+        if (!isRecording && userAnswer.length > 0) {
+            updateUserAnswer();
+        }
+    }, [userAnswer])
 
     const startStopRecording = async () => {
         if (isRecording) {
-           
             stopSpeechToText();
-           
-
             toast.success("Recording Stopped!");
-
-        } else {
-            startSpeechToText();
-            toast.info("Recording Started!");
         }
-    };
+        else {
+            startSpeechToText();
+            toast.info("Recording Started   !");
+        }
+    }
+
 
     const updateUserAnswer = async () => {
-    setLoading(true);
-
-     console.log("Mock Interview Questions:", mockInterviewQuestion);
-     console.log("Active Question Index:", activeQuestionIndex);
-
-    // if (!mockInterviewQuestion || !Array.isArray(mockInterviewQuestion) || mockInterviewQuestion.length === 0) {
-    //     console.error("❌ Error: mockInterviewQuestion is empty or not an array!");
-    //     toast.error("Error: Questions are not loaded properly.");
-    //     setLoading(false);
-    //     return;
-    // }
-
-    // const questionText = mockInterviewQuestion?.[activeQuestionIndex]?.question;
-    
-    // if (!questionText) {
-    //     console.error("❌ Error: Question is missing! Active index:", activeQuestionIndex);
-    //     toast.error("Error: The question is missing.");
-    //     setLoading(false);
-    //     return;
-    // }
-
-    // console.log("✅ Processing Answer for Question:", questionText);
+        setLoading(true);
+        const questions = mockInterviewQuestion?.interview_questions || [];
+        console.log("Mock Interview Questions:", mockInterviewQuestion);
+        console.log("Active Question Index:", activeQuestionIndex);
 
 
-    const feedbackPrompt = `Question: ${mockInterviewQuestion[activeQuestionIndex]?.question}, 
-    User Answer: ${userAnswer}. 
-    Based on the question and answer, please provide a rating and feedback for improvement 
-    in JSON format with 'rating' and 'feedback' fields.`;
+        console.log(userAnswer);
+        const feedbackPrompt = `Question: ${questions[activeQuestionIndex].question}, 
+        User Answer: ${userAnswer}. 
+        Based on the question and answer, please provide a rating and feedback for improvement 
+        in JSON format with 'rating' and 'feedback' fields.`;
 
-    try {
-        const result = await chatSession.sendMessage(feedbackPrompt);
-        const responseText = await result.response.text(); // ✅ Fix: Await response
-        const formattedResponse = responseText.replace('```json', '').replace('```', '').trim();
-        
-        const jsonFeedbackResp = JSON.parse(formattedResponse); // ✅ Fix: Proper declaration
-        console.log("JSON Feedback Response:", jsonFeedbackResp);
-        console.log("Mock ID:", interviewData?.mockId);
-        console.log("User Email:", user?.primaryEmailAddress?.emailAddress);
+        try {
+            console.log("Feedback Prompt:", feedbackPrompt);
+            const result = await chatSession.sendMessage(feedbackPrompt);
+            const responseText = await result.response.text(); // ✅ Fix: Await response
+            const formattedResponse = responseText.replace('```json', '').replace('```', '').trim();
+            const jsonFeedbackResp = JSON.parse(formattedResponse); // ✅ Fix: Proper declaration
+            console.log("JSON Feedback Response:", jsonFeedbackResp);
+            console.log("Mock ID:", interviewData?.mockId);
+            console.log("User Email:", user?.primaryEmailAddress?.emailAddress);
 
-        if (!interviewData?.mockId || !user?.primaryEmailAddress?.emailAddress) {
-            console.error("Missing required fields");
-            toast.error("Error: Missing required fields");
-            setLoading(false);
-            return;
+            if (!interviewData?.mockId || !user?.primaryEmailAddress?.emailAddress) {
+                console.error("Missing required fields");
+                toast.error("Error: Missing required fields");
+                setLoading(false);
+                return;
+            }
+            if (jsonFeedbackResp) {
+                const resp = await db.insert(UserAnswer).values({
+                    mockIdRef: interviewData?.mockId,
+                    question: questions[activeQuestionIndex].question,
+                    correctAns: questions[activeQuestionIndex].answer,
+                    userAns: userAnswer,
+                    feedback: jsonFeedbackResp?.feedback,
+                    rating: jsonFeedbackResp?.rating,
+                    userEmail: user?.primaryEmailAddress?.emailAddress,
+                    createdAt: moment().format('DD-MM-YYYY')
+                });
+                console.log("Inserted User Answer:", resp);
+            } else {
+                console.log('Error in generating response')
+            }
+
+            if (resp) {
+                toast.success("User answer recorded successfully!");
+            }
+
+        } catch (error) {
+            console.error("Error fetching AI response:", error);
+            toast.error("Failed to get feedback from AI");
         }
-        if(jsonFeedbackResp){
-        const resp = await db.insert(UserAnswer).values({
-            mockIdRef: interviewData?.mockId,
-            question: mockInterviewQuestion[activeQuestionIndex]?.question,
-            correctAns: mockInterviewQuestion[activeQuestionIndex]?.answer,
-            userAns: userAnswer,
-            feedback: jsonFeedbackResp?.feedback,
-            rating: jsonFeedbackResp?.rating,
-            userEmail: user?.primaryEmailAddress?.emailAddress,
-            createdAt: moment().format('DD-MM-YYYY')
-        });
-        console.log("Inserted User Answer:", resp);
-    }else {
-        console.log('Error in generating response')
-    }
-
-        if (resp) {
-            toast.success("User answer recorded successfully!");
-        }
-
-    } catch (error) {
-        console.error("Error fetching AI response:", error);
-        toast.error("Failed to get feedback from AI");
-    }
-    setUserAnswer('');
-    setLoading(false);
-};
+        setResults([]);
+        setUserAnswer('');
+        setLoading(false);
+    };
 
 
     return (
@@ -144,14 +139,14 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex,interv
                     }}
                 />
             </div>
-            <Button 
-            disabled={loading}
-            variant="outline" className="my-10" onClick={startStopRecording}>
-                {isRecording ? 
-                    <h2 className='text-red-500 flex gap-2'><Mic /> Recording...</h2> 
+            <Button
+                disabled={loading}
+                variant="outline" className="my-10" onClick={startStopRecording}>
+                {isRecording ?
+                    <h2 className='text-red-500 flex gap-2'><Mic /> Recording...</h2>
                     : 'Record Answer'}
             </Button>
-            <Button onClick={() => console.log(userAnswer)}>Show User Answer</Button>
+
         </div>
     );
 };

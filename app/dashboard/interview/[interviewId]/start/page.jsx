@@ -8,7 +8,7 @@ import QuestionsSection from './_components/QuestionsSection';
 import { useParams } from 'next/navigation';
 import RecordAnswerSection from './_components/RecordAnswerSection';
 import Link from 'next/link';
-import {Button} from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 function StartInterview() {
   const params = useParams();  // Use the useParams hook
@@ -16,6 +16,8 @@ function StartInterview() {
   const [interviewData, setInterviewData] = useState();
   const [mockInterviewQuestion, setMockInterviewQuestion] = useState([]);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
+  const questions = mockInterviewQuestion?.interview_questions || [];
+
   useEffect(() => {
     getInterviewDetails();
   }, [])
@@ -49,21 +51,21 @@ function StartInterview() {
           activeQuestionIndex={activeQuestionIndex}
         />
         {/* Video and audio secion*/}
-        <RecordAnswerSection 
-           mockInterviewQuestion={mockInterviewQuestion}
-           activeQuestionIndex={activeQuestionIndex}
-           interviewData={interviewData}
+        <RecordAnswerSection
+          mockInterviewQuestion={mockInterviewQuestion}
+          activeQuestionIndex={activeQuestionIndex}
+          interviewData={interviewData}
         />
       </div>
       <div className='flex justify-end gap-6'>
-      {activeQuestionIndex>0 &&  
-      <Button onClick={()=>setActiveQuestionIndex(activeQuestionIndex-1)}>Previous Question</Button>}
-      {activeQuestionIndex!=mockInterviewQuestion?.length-1 &&<Button onClick={()=>setActiveQuestionIndex(activeQuestionIndex+1)}>Next Question</Button>}
-      {activeQuestionIndex==mockInterviewQuestion?.length-1 && 
-      <Link href={'/dashboard/interview/'+interviewData?.mockId+'/feedback'}>
-      <Button>End Interview</Button>
-      </Link>
-      }
+        {activeQuestionIndex > 0 &&
+          <Button onClick={() => setActiveQuestionIndex(activeQuestionIndex - 1)}>Previous Question</Button>}
+        {activeQuestionIndex != questions.length - 1 && <Button onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}>Next Question</Button>}
+        {activeQuestionIndex == questions.length - 1 &&
+          <Link href={'/dashboard/interview/' + interviewData?.mockId + '/feedback'}>
+            <Button>End Interview</Button>
+          </Link>
+        }
       </div>
     </div>
   )
