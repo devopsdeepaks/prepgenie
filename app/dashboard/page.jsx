@@ -3,6 +3,7 @@ import AddNewInterview from './_component/AddNewInterview'
 import InterviewList from './_component/InterviewList'
 
 const DashboadPage = () => {
+
     return (
         <div>
             <h1 className='font-bold text-2xl'>Dashboard</h1>
