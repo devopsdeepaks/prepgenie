@@ -11,11 +11,13 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { AlertOctagonIcon, ArrowRight, ArrowUpLeftFromSquareIcon } from 'lucide-react'
 import { InfiniteLogoScroll } from '@/components/ui/infinite-logo'
 import { LampContainer } from '@/components/ui/lamp'
+import  Footer  from './_component/Footer'
+import Pricing from './_component/pricing'
 const DeepakPage = () => {
 
 
     return (
-        <div className='bg-black' >
+        <div className='bg-black ' >
             {/* Hero Section */}
 
             {/* Spotlight  */}
@@ -150,7 +152,14 @@ const DeepakPage = () => {
                 </motion.h1> */}
             </LampContainer>
 
+            <Pricing />
+         
+          <Footer />
+
+
+         
         </div >
+        
     )
 }
 
