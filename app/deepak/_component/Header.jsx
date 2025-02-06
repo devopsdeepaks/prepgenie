@@ -42,7 +42,7 @@ const Header = () => {
                     </motion.li>
                     <motion.li
                         className={`hover: text-primary text-gray-300 hover:font-bold transition-all cursor-pointer
-                        ${path == '/dashboard/upgrade' && 'text-white bg-gray-900 rounded-lg p-4 font-bold'} `
+                        ${path == '/techzone' && 'text-white bg-gray-900 rounded-lg p-4 font-bold'} `
                         }
                         whileHover={{ scale: 1.1 }}>
                         TechZone</motion.li>

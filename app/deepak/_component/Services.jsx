@@ -2,6 +2,7 @@
 import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { SparklesPreview } from "./demo";
 
 export function GlowingEffectDemoSecond() {
     return (
@@ -9,35 +10,37 @@ export function GlowingEffectDemoSecond() {
             <div className="bg-black p-4 flex justify-center items-center  flex-col">
                 <TextGenerateEffect
                     className={'text-xl w-3/5 text-center sm:text-5xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 '}
-                    words="Use it for advanced project planning." />
-                <p className='text-2xl w-1/2 text-center  relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-2'>This project management software automates scheduling making project planning more accurate and dynamic to save you valuable time.</p>
+                    words="Use PrepGenie for Career Growth" />
+
+                {/* <p className='text-2xl w-1/2 text-center  relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-2'>This project management software automates scheduling making project planning more accurate and dynamic to save you valuable time.</p> */}
+                <SparklesPreview />
                 < ul
                     className="grid grid-cols-1 mt-20 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2" >
                     <GridItem
                         area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
                         icon={<Box className="h-4 w-4 text-black dark:text-neutral-400" />}
-                        title="Do things the right way"
-                        description="Running out of copy so I'll write anything." />
+                        title="AI-Powered Mock Interviews"
+                        description="Simulate real interview experiences with AI-driven questions and instant feedback. Improve your skills and confidence effortlessly." />
                     <GridItem
                         area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
                         icon={<Settings className="h-4 w-4 text-black dark:text-neutral-400" />}
-                        title="The best AI code editor ever."
-                        description="Yes, it's true. I'm not even kidding. Ask my mom if you don't believe me." />
+                        title="Comprehensive Roadmaps"
+                        description="Follow step-by-step guides curated for multiple domains like Software Development, Data Science, Cybersecurity, and more." />
                     <GridItem
                         area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
                         icon={<Lock className="h-4 w-4 text-black dark:text-neutral-400" />}
-                        title="You should buy Aceternity UI Pro"
-                        description="It's the best money you'll ever spend" />
+                        title="Tech Trend Hub"
+                        description="Stay ahead with the latest industry news, trending projects, and exclusive bounty opportunities in the tech world." />
                     <GridItem
                         area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
                         icon={<Sparkles className="h-4 w-4 text-black dark:text-neutral-400" />}
-                        title="This card is also built by Cursor"
-                        description="I'm not even kidding. Ask my mom if you don't believe me." />
+                        title="Personalized Learning Paths"
+                        description="Track your progress, get recommendations based on your goals, and never feel lost in your career journey." />
                     <GridItem
                         area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
                         icon={<Search className="h-4 w-4 text-black dark:text-neutral-400" />}
-                        title="Coming soon on Aceternity UI"
-                        description="I'm writing the code as I record this, no shit." />
+                        title="Community & Collaboration"
+                        description="Connect with like-minded professionals, join discussions, and collaborate on real-world projects." />
                 </ul >
 
             </div >)

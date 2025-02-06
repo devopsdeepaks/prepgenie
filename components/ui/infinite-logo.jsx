@@ -73,7 +73,7 @@ export const InfiniteLogoScroll = ({
                         <img
                             src={logo}
                             alt={`logo-${idx}`}
-                            className="w-full h-full object-contain"
+                            className="w-full filter hue-rotate-90 saturate-150 h-full object-contain"
                         />
                     </div>
                 ))}

@@ -28,7 +28,7 @@ export const TextGenerateEffect = ({
                     return (
                         (<motion.span
                             key={word + idx}
-                            className={`${idx > 5 ? 'text-cyan-400 ' : 'dark:text-white text-black opacity-0'}`}
+                            className={`${idx > 4 ? 'text-cyan-500 ' : 'dark:text-white text-black opacity-0'}`}
                             initial={{ textShadow: "0 0 5px rgba(255,255,255,0)" }}
                             animate={{ textShadow: "0 0 15px rgba(255,255,255,0.2)" }}
                             transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
