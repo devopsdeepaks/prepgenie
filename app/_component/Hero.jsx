@@ -24,7 +24,7 @@ const HeroSection = () => {
             </div>
 
             {/* Content of hero Section  */}
-            <motion.div className='flex p-20 justify-center items-center h-screen flex-col'>
+            <motion.div className='flex p-16 justify-center items-center h-screen flex-col'>
 
                 {/* Floating Left Images  */}
                 <motion.img

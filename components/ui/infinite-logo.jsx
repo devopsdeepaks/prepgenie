@@ -69,7 +69,7 @@ export const InfiniteLogoScroll = ({
                 )}
             >
                 {logos.map((logo, idx) => (
-                    <div key={idx} className="w-32 h-32 flex-shrink-0">
+                    <div key={idx} className="w-16 h-16 flex-shrink-0">
                         <img
                             src={logo}
                             alt={`logo-${idx}`}

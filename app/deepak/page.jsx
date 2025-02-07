@@ -20,7 +20,9 @@ import Pricing from './_component/Pricing'
 import Footer from './_component/Footer'
 import { WorldMapDemo } from './_component/contact'
 import { SparklesPreview } from './_component/demo'
-import PricingCard from './_component/PricingCard'
+import { TextRevealCard } from '@/components/ui/text-reveal-card'
+import TextSection from './_component/TextSection'
+// import PricingCard from './_component/PricingCard'
 // import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect'
 
 // import { AnimatePresence, motion } from "framer-motion";
@@ -35,6 +37,7 @@ const DeepakPage = () => {
             <GlowingEffectDemoSecond />
             <InfiniteMovingCardsDemo />
             <Pricing />
+            <TextSection />
             <Footer />
             <div>
 

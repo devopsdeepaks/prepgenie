@@ -5,10 +5,10 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Fullscreen, SmileIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import { SparklesPreview } from "./demo";
+import { SparklesPreview } from "./SparklesPreview";
 
 
-export function InfiniteMovingCardsDemo() {
+export function Testimonials() {
     return (
         (
             <div>

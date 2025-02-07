@@ -2,12 +2,14 @@
 import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { SparklesPreview } from "./demo";
+import { SparklesPreview } from "./SparklesPreview";
 
-export function GlowingEffectDemoSecond() {
+
+
+export function Services() {
     return (
         (
-            <div className="bg-black pt-16 p-4 flex justify-center items-center  flex-col">
+            <div className="bg-black pt-16 p-4 flex justify-center items-center  flex-col" id="services">
                 <TextGenerateEffect
                     className={'text-xl w-3/5 text-center sm:text-5xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 '}
                     words="Use PrepGenie for Career Growth" />

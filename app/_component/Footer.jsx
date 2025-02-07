@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import { FaLinkedin, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";

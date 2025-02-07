@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { SparklesPreview } from "./demo";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { SparklesPreview } from "./SparklesPreview";
 
 export default function Pricing() {
     const plans = [
