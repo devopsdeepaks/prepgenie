@@ -19,31 +19,31 @@ function QuestionsSection({ mockInterviewQuestion, activeQuestionIndex }) {
     };
 
     return mockInterviewQuestion && (
-        <div className="p-5 border rounded-lg my-5">
+        <div className="dark p-5 border rounded-lg my-5 bg-gradient-to-br from-[#0C0C0D] to-black">
             <div className='grid m-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5'>
                 {questions.length > 0 ? (
                     questions.map((item, index) => (
                         <h2 key={index}
-                            className={`p-2 bg-secondary rounded-full text-xs md:text-sm text-center cursor-pointer 
-                            ${activeQuestionIndex === index ? 'bg-yellow text-red-500' : ''}`}>
+                            className={`p-2 bg-cyan-500 text-white rounded-full text-xs md:text-sm text-center cursor-pointer 
+                            ${activeQuestionIndex === index ? 'bg-green-500 text-white' : ''}`}>
                             Ques #{index + 1}
                         </h2>
                     ))
                 ) : (
-                    <p>No questions available</p>
+                    <p className='text-white'>No questions available</p>
                 )}
             </div>
 
             {questions.length > 0 && activeQuestionIndex >= 0 && activeQuestionIndex < questions.length ? (
                 <>
-                    <h2 className='my-5 text-md md:text-lg'>{questions[activeQuestionIndex].question}</h2>
-                    <Volume2 className='cursor-pointer w-10 h-10 text-gray-700' onClick={() => textToSpeech(questions[activeQuestionIndex].question)} />
+                    <h2 className='my-5 text-white text-md md:text-lg'>{questions[activeQuestionIndex].question}</h2>
+                    <Volume2 className='cursor-pointer  w-10 h-10 text-white' onClick={() => textToSpeech(questions[activeQuestionIndex].question)} />
                 </>
             ) : (
                 <h2 className='my-5 text-md md:text-lg'>No question selected</h2>
             )}
 
-            <div className='border rounded-lg p-5 bg-gray-100 mt-20'>
+            <div className='border rounded-lg p-5 bg-gray-100 mt-10'>
                 <h2 className='flex gap-2 items-center text-gray-700'>
                     <Lightbulb />
                     <strong>Note : </strong>

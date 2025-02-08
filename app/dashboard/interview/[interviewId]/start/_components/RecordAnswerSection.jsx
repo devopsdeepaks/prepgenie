@@ -126,9 +126,9 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
 
 
     return (
-        <div className='flex flex-col items-center justify-center'>
+        <div className='dark flex flex-col items-center justify-center'>
             <Toaster />
-            <div className='flex flex-col items-center justify-center bg-secondary rounded-lg p-5 mt-5'>
+            <div className='flex flex-col items-center justify-center bg-gradient-to-br from-[#0C0C0D] to-black border rounded-lg p-5 mt-5'>
                 <Image src={'/webcamm.png'} width={200} height={200} className='absolute' alt='This is an Image' />
                 <Webcam
                     mirrored={true}
@@ -141,9 +141,9 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
             </div>
             <Button
                 disabled={loading}
-                variant="outline" className="my-10" onClick={startStopRecording}>
+                variant="outline" className="my-10 text-white " onClick={startStopRecording}>
                 {isRecording ?
-                    <h2 className='text-red-500 flex gap-2'><Mic /> Recording...</h2>
+                    <h2 className='text-white flex gap-2'><Mic /> Recording...</h2>
                     : 'Record Answer'}
             </Button>
 

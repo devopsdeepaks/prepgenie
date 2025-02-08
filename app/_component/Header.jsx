@@ -36,7 +36,7 @@ const Header = () => {
                     </motion.li>
                     {user ? <motion.li
                         className={`hover: text-primary text-gray-300 hover:font-bold transition-all cursor-pointer
-                        ${path == '/dashboard/questions' && 'text-white bg-[#131315] rounded-lg p-4 font-bold'} `
+                        ${path == '/dashboard' && 'text-white bg-[#131315] rounded-lg p-4 font-bold'} `
                         }
                         whileHover={{ scale: 1.1 }}
                         onClick={() => router.push("/dashboard")}>Interview

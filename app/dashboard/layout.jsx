@@ -1,11 +1,11 @@
 import React from 'react'
-import Header from './_component/Header'
-
+import Header from '../_component/Header'
 const DashboadLayout = ({ children }) => {
     return (
-        <div>
+
+        <div className='dark bg-black bg-grid-white/[0.1]'>
             <Header />
-            <div className='p-10'>
+            <div >
                 {children} {/* This will render only the specific page content */}
             </div>
         </div>

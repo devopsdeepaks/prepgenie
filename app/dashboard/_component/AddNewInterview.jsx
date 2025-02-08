@@ -19,6 +19,7 @@ import { useUser } from '@clerk/nextjs'
 import moment from 'moment'
 import { MockInterview } from '@/utils/schema'
 import { useRouter } from 'next/navigation'
+import { MultiStepLoaderDemo } from './multi-step-loader-demo'
 const AddNewInterview = () => {
     const [openDialog, setOpenDialog] = useState(false)
     const [jobPosition, setJobPosition] = useState()
@@ -70,49 +71,51 @@ const AddNewInterview = () => {
     }
     return (
         <div>
-            <div className='p-10 border rounded-lg bg-secondary hover:scale-105 hover:shadow-md cursor-pointer transition-all' onClick={() => setOpenDialog(true)}>
-                <h2 className=' text-lg text-center'>+ Add New</h2>
+            <div className='p-10 border bg-[#0C0C0D] rounded-lg  hover:scale-105 hover:shadow-md cursor-pointer transition-all' onClick={() => setOpenDialog(true)}>
+                <h2 className=' text-lg text-white text-center'>+ Add New</h2>
             </div>
-            <Dialog open={openDialog}>
+            <Dialog open={openDialog} className="bg-black">
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle className="text-xl">Tell us more about job you are interviewing</DialogTitle>
+                        <DialogTitle className="text-xl text-white">Tell us more about job you are interviewing</DialogTitle>
                         <DialogDescription >
                             Add details about your job position, skills and year of experience.
                         </DialogDescription >
                         <form onSubmit={onSubmit}>
-                            <div className='mt-5 my-2'>
-                                <label htmlFor="">Job Role/Job Position</label>
-                                <Input placeholder="Ex. Full Stack Developer" required
+                            <div className='mt-5 my-3 '>
+                                <label htmlFor="" className='text-white'>Job Role/Job Position</label>
+                                <Input className="bg-[#0c0c0d] text-white mt-2" placeholder="Ex. Full Stack Developer" required
                                     onChange={(event) => setJobPosition(event.target.value)}
                                 />
                             </div>
-                            <div className=' my-2'>
-                                <label htmlFor="">Job Description/Tech Stack</label>
-                                <Textarea placeholder="Ex. React, Nextjs, Nodejs etc" required
+                            <div className=' my-3'>
+                                <label htmlFor="" className='text-white'>Job Description/Tech Stack</label>
+                                <Textarea className="bg-[#0c0c0d] text-white mt-2" placeholder="Ex. React, Nextjs, Nodejs etc" required
                                     onChange={(event) => setJobDesc(event.target.value)}
                                 />
                             </div>
-                            <div className=' my-2'>
-                                <label htmlFor="">Years of Experience</label>
-                                <Input placeholder="Ex. 5" type="number" max="90" required
+                            <div className=' my-3'>
+                                <label htmlFor="" className='text-white'>Years of Experience</label>
+                                <Input className="bg-[#0c0c0d] text-white mt-2" placeholder="Ex. 5" type="number" max="90" required
                                     onChange={(event) => setJobExperience(event.target.value)}
                                 />
                             </div>
                             <div className='gap-5 flex justify-end'>
-                                <Button type="button" variant="ghost" onClick={() => setOpenDialog(false)}>Cancel</Button>
+                                <Button type="button" className="text-white" variant="ghost" onClick={() => setOpenDialog(false)}>Cancel</Button>
                                 <Button type="submit" disabled={loading} >
-                                    {loading ?
+                                    {/* {loading ?
                                         <>
                                             <LoaderCircle className='animate-spin' />'Generating from AI'
                                         </> : 'Start Interview'
-                                    }
+                                    } */}
+                                    Start Interview
                                 </Button>
                             </div>
                         </form>
                     </DialogHeader>
                 </DialogContent>
             </Dialog>
+            {loading ? <MultiStepLoaderDemo /> : null}
         </div >
     )
 }
