@@ -31,7 +31,7 @@ const chartConfig = {
         label: "Desktop",
         color: "hsl(var(--chart-1))",
     },
-} satisfies ChartConfig
+}
 
 export function Component() {
     return (

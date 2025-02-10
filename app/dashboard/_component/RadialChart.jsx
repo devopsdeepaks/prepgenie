@@ -1,5 +1,4 @@
 "use client"
-
 import { TrendingUp } from "lucide-react"
 import {
     Label,
@@ -30,7 +29,7 @@ const chartConfig = {
         label: "Safari",
         color: "hsl(var(--chart-2))",
     },
-} satisfies ChartConfig
+}
 
 export function Component() {
     return (

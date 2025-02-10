@@ -1,0 +1,29 @@
+"use client"
+import React from "react";
+
+const categories = {
+  top: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"],
+  related: ["Related 1", "Related 2", "Related 3", "Related 4", "Related 5"],
+  otherCategories: ["Category A", "Category B", "Category C", "Category D", "Category E"],
+};
+
+const VerticalScroller = () => {
+  return (
+    <div className="flex gap-4 p-4 w-full h-screen bg-gray-100">
+      {Object.entries(categories).map(([key, items]) => (
+        <div key={key} className="w-1/3 bg-white shadow-lg rounded-lg p-4">
+          <h2 className="text-lg font-bold mb-2 capitalize">{key}</h2>
+          <div className="h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400">
+            {items.map((item, index) => (
+              <div key={index} className="p-2 border-b border-gray-200">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default VerticalScroller;
