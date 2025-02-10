@@ -12,7 +12,7 @@ import { AlertOctagonIcon, ArrowRight, ArrowUpLeftFromSquareIcon } from 'lucide-
 import { InfiniteLogoScroll } from '@/components/ui/infinite-logo'
 import { LampContainer } from '@/components/ui/lamp'
 import { ContainerScroll } from '@/components/ui/container-scroll'
-import HeroSection from './_component/hero'
+import HeroSection from './_component/Hero'
 import About from './_component/About'
 import { GlowingEffectDemoSecond } from './_component/Services'
 import { InfiniteMovingCardsDemo } from './_component/Testimonial'
