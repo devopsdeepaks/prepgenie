@@ -16,7 +16,7 @@ function StartInterview() {
   const [interviewData, setInterviewData] = useState();
   const [mockInterviewQuestion, setMockInterviewQuestion] = useState([]);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
-  const questions = mockInterviewQuestion?.interview_questions || [];
+  const questions = mockInterviewQuestion || [];
 
   useEffect(() => {
     getInterviewDetails();

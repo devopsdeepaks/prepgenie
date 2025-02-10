@@ -68,19 +68,19 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
 
     const updateUserAnswer = async () => {
         setLoading(true);
-        const questions = mockInterviewQuestion?.interview_questions || [];
-        console.log("Mock Interview Questions:", mockInterviewQuestion);
-        console.log("Active Question Index:", activeQuestionIndex);
+        const questions = mockInterviewQuestion || [];
+        // console.log("Mock Interview Questions:", mockInterviewQuestion);
+        // console.log("Active Question Index:", activeQuestionIndex);
 
 
-        console.log(userAnswer);
+        // console.log(userAnswer);
         const feedbackPrompt = `Question: ${questions[activeQuestionIndex].question}, 
         User Answer: ${userAnswer}. 
         Based on the question and answer, please provide a rating and feedback for improvement 
         in JSON format with 'rating' and 'feedback' fields.`;
 
         try {
-            console.log("Feedback Prompt:", feedbackPrompt);
+            // console.log("Feedback Prompt:", feedbackPrompt);
             const result = await chatSession.sendMessage(feedbackPrompt);
             const responseText = await result.response.text(); // ✅ Fix: Await response
             const formattedResponse = responseText.replace('```json', '').replace('```', '').trim();
@@ -106,7 +106,7 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
                     userEmail: user?.primaryEmailAddress?.emailAddress,
                     createdAt: moment().format('DD-MM-YYYY')
                 });
-                //console.log("Inserted User Answer:", resp);
+                console.log("Inserted User Answer:", resp);
             } else {
                 console.log('Error in generating response')
             }

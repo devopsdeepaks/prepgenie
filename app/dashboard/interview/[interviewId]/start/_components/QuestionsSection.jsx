@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 
 function QuestionsSection({ mockInterviewQuestion, activeQuestionIndex }) {
     const [isClient, setIsClient] = useState(false);
-    const questions = mockInterviewQuestion?.interview_questions || [];
+    const questions = mockInterviewQuestion || [];
+    console.log("questions", questions);
+    console.log("mock", mockInterviewQuestion)
 
     useEffect(() => {
         setIsClient(true);
@@ -21,6 +23,7 @@ function QuestionsSection({ mockInterviewQuestion, activeQuestionIndex }) {
     return mockInterviewQuestion && (
         <div className="dark p-5 border rounded-lg my-5 bg-gradient-to-br from-[#0C0C0D] to-black">
             <div className='grid m-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5'>
+                {/* <p>{questions.length}</p> */}
                 {questions.length > 0 ? (
                     questions.map((item, index) => (
                         <h2 key={index}
