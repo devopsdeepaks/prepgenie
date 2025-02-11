@@ -14,7 +14,7 @@ export function Testimonials() {
             <div>
                 <div className="bg-black -mt-56  flex justify-center items-center  flex-col">
                     <img src="/heartimage.png" alt="dil ka  photo" />
-                    <p className='text-2xl -mt-48 w-1/2 text-center  relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-2'><SmileIcon className="text-white inline-block " /> Testimonials</p>
+                    <p className='text-2xl -mt-48 w-1/2 text-center  relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-2'> Testimonials <SmileIcon className="text-white inline-block " /></p>
                     <TextGenerateEffect
                         className={'text-xl  w-3/5 text-center sm:text-5xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 '}
                         words="What Our Users Say" />

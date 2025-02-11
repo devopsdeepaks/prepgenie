@@ -7,6 +7,11 @@ body {
   overflow-x: hidden;
 }
 
+::selection {
+  background-color: cyan;
+  color: white;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

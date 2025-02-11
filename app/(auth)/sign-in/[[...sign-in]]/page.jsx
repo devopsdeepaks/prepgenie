@@ -4,12 +4,12 @@ export default function Page() {
     return (
 
 
-        < section className="bg-white" >
+        < section className="bg-black dark bg-grid-white/[0.1]" >
             <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
                 <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
                     <img
                         alt=""
-                        src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                        src="/signin.jpg"
                         className="absolute inset-0 h-full w-full object-cover opacity-80"
                     />
 
@@ -72,7 +72,41 @@ export default function Page() {
                             </p>
                         </div>
 
-                        <SignIn />
+                        <SignIn
+                            appearance={{
+                                baseTheme: "dark",
+                                elements: {
+                                    rootBox: {
+                                        backgroundColor: "#0C0C0D",
+                                        borderRadius: "12px",
+                                        boxShadow: "0px 4px 10px rgba(0,0,0,0.5)",
+                                        color: "#ffffff",
+                                    },
+                                    card: {
+                                        backgroundColor: "#0C0C0D",
+                                        borderRadius: "12px",
+                                    },
+                                    headerTitle: { color: "#ffffff" },
+                                    socialButtonsBlockButton: {
+                                        backgroundColor: "black",
+                                        color: "#ffffff",
+                                        border: "1px solid #ff6b00",
+                                    },
+                                    formFieldInput: {
+                                        backgroundColor: "#1a1a1a",
+                                        borderColor: "#ff6b00",
+                                        color: "#ffffff",
+                                    },
+                                    formButtonPrimary: {
+                                        backgroundColor: "black",
+                                        color: "#ffffff",
+                                    },
+                                    footer: { color: "#ffffff" },
+                                },
+                            }}
+                        />
+
+
                     </div>
                 </main>
             </div>

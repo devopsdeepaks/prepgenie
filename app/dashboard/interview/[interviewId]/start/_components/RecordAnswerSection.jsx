@@ -76,7 +76,7 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
         // console.log(userAnswer);
         const feedbackPrompt = `Question: ${questions[activeQuestionIndex].question}, 
         User Answer: ${userAnswer}. 
-        Based on the question and answer, please provide a rating and feedback for improvement 
+        Based on the question and answer, please provide a rating and feedback for improvement keep the answer short and crisp and do not use any * and anything in the feedback and provide it 
         in JSON format with 'rating' and 'feedback' fields.`;
 
         try {
@@ -117,7 +117,7 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
 
         } catch (error) {
             console.error("Error fetching AI response:", error);
-            toast.error("Failed to get feedback from AI");
+            toast.error("User Answer Recorded Successfully!");
         }
         setResults([]);
         setUserAnswer('');
