@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import { PhoneCallIcon, PlusCircleIcon } from "lucide-react";
 
-export function FloatingDockDemo() {
+export function FloatingDockDemo({ onAddTweet }) {
     const links = [
         {
             title: "Home",
@@ -32,7 +32,9 @@ export function FloatingDockDemo() {
         {
             title: "Add Tweet",
             icon: (
-                <PlusCircleIcon className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+                <PlusCircleIcon className="h-full w-full text-neutral-500 dark:text-neutral-300" 
+                onClick={onAddTweet}
+                />
             ),
             href: "#",
         },

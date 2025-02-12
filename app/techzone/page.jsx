@@ -93,6 +93,7 @@ const DashboardPage = () => {
 
            {/* Floating Dock */}
         <div className="relative bottom-40 ">
+            
           <FloatingDockDemo onAddTweet={() => setIsPopupOpen(true)} />
         </div>
 
