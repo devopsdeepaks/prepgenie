@@ -18,9 +18,9 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "PrepGenie",
-  icons: {
-    icon: "/image.svg",
-  },
+  // icons: {
+  //   icon: "/image.svg",
+  // },
   description: "AI-Powered Guide to Tech Success",
 };
 
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
         >
           <Toaster />
-          <CanvasCursor id="canvas" />
+          <CanvasCursor id="canvas" className="z-90" />
           {children}
         </body>
       </html>
