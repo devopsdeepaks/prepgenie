@@ -87,7 +87,7 @@ const About = () => {
                 {/* logo section  moving  */}
                 <div className='flex justify-center my-8 items-center flex-col'>
                     <p className='text-xl mt-5  text-center  relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-2'>Powering PrepGenie with Cutting-Edge Technology</p>
-                    <InfiniteLogoScroll className={'fill-white'} logos={["/logo1.svg", "/logo2.svg", "/logo3.svg", "/logo4.svg", "logo5.svg"]} />
+                    <InfiniteLogoScroll className={'fill-white'} logos={["/logo1.svg", "/logo2.svg", "/logo3.svg", "/logo4.svg"]} />
                 </div>
 
 

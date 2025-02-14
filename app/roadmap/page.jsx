@@ -1,8 +1,6 @@
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import React from 'react'
-import { SparklesPreview } from '../_component/SparklesPreview'
-import { AddContainer } from './_component/AddContainer'
-import { TimelineDemo } from './_component/Web'
+import { RoadMaps } from './_component/Roadmaps'
 
 const DeepakPage = () => {
     return (
@@ -12,8 +10,7 @@ const DeepakPage = () => {
                 words="RoadMaps" />
             {/* <SparklesPreview /> */}
             <div className='flex-row'>
-                <AddContainer />
-                <TimelineDemo />
+                <RoadMaps />
             </div>
         </div>
     )
