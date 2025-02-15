@@ -2,7 +2,7 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import React from 'react'
 import { RoadMaps } from './_component/Roadmaps'
 
-const DeepakPage = () => {
+const Roadmap = () => {
     return (
         <div className='text-white pt-32 p-8 flex flex-col '>
             <TextGenerateEffect
@@ -16,4 +16,4 @@ const DeepakPage = () => {
     )
 }
 
-export default DeepakPage
+export default Roadmap

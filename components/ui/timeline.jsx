@@ -1,13 +1,18 @@
 "use client";;
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import { TextGenerateEffect } from "./text-generate-effect";
+import { SpotlightN } from "../spotlight-new";
 
 export const Timeline = ({
-    data
+    data, title, description
 }) => {
+
     const ref = useRef(null);
     const containerRef = useRef(null);
     const [height, setHeight] = useState(0);
+
+
 
     useEffect(() => {
         if (ref.current) {
@@ -26,17 +31,15 @@ export const Timeline = ({
 
     return (
         (<div
-            className="w-full bg-white dark:bg-black font-sans md:px-10"
+            className="w-full pt-24 bg-white bg-grid-white/[0.1] dark:bg-black font-sans md:px-10"
             ref={containerRef}>
-            <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-                <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
-                    Changelog from my journey
-                </h2>
-                <p
-                    className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
-                    I&apos;ve been working on Aceternity for the past 2 years. Here&apos;s
-                    a timeline of my journey.
-                </p>
+            <SpotlightN />
+            <div className="max-w-7xl  mx-auto py-20 px-4 md:px-8 lg:px-10">
+                <TextGenerateEffect
+                    className={'text-4xl  text-left sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 '}
+                    words={title} />
+
+                <p className='text-2xl -pb-16  text-left  relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-2'>{description}</p>
             </div>
             <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
                 {data.map((item, index) => (

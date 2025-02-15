@@ -4,8 +4,11 @@ import Image from "next/image";
 import { Lens } from "@/components/ui/lens";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export function RoadMaps() {
+
+    const router = useRouter();
     const [hovering, setHovering] = useState(false);
     const sections = [
         {
@@ -14,6 +17,7 @@ export function RoadMaps() {
                 "Learn how to build modern, responsive websites and web applications from scratch.",
             image: "/webdev.jpeg",
             buttonText: "Start with Web Development",
+            thisPath: "/roadmap/web",
         },
         {
             title: "Data Structure",
@@ -21,6 +25,7 @@ export function RoadMaps() {
                 "Master essential data structures and algorithms to improve problem-solving skills.",
             image: "/dsa.png",
             buttonText: "Start with Data Structure",
+            thisPath: "/roadmap/dsa",
         },
         {
             title: "Android Development",
@@ -28,6 +33,7 @@ export function RoadMaps() {
                 "Develop powerful Android apps using the latest tools and frameworks.",
             image: "/app.jpg",
             buttonText: "Start with Android Development",
+            thisPath: "/roadmap/android",
         },
     ];
 
@@ -64,6 +70,7 @@ export function RoadMaps() {
                                 initial={{ scale: 1 }}
                                 whileHover={{ scale: 1.1 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                onClick={() => router.push(section.thisPath)}
                             >
                                 {section.buttonText}
                             </motion.button>

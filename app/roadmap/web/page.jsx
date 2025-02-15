@@ -388,7 +388,7 @@ export default function WebDevelopment() {
         {
             title: "Foundation",
             content: (
-                <div>
+                <div className="text-white">
                     {collapsibleData.map((section, index) => (
                         <Collapsible key={index}>
                             <CollapsibleTrigger className="text-xl p-3 mt-2 rounded bg-[#0C0C0D]">
@@ -424,7 +424,7 @@ export default function WebDevelopment() {
         {
             title: "Frontend Development",
             content: (
-                <div>
+                <div className="text-white">
                     {frontendDevelopmentRoadmap.map((section, index) => (
                         <Collapsible key={index}>
                             <CollapsibleTrigger className="text-xl p-3 mt-2 rounded bg-[#0C0C0D]">
@@ -460,7 +460,7 @@ export default function WebDevelopment() {
         {
             title: "Backend Development",
             content: (
-                <div>
+                <div className="text-white">
                     {backendDevelopmentRoadmap.map((section, index) => (
                         <Collapsible key={index}>
                             <CollapsibleTrigger className="text-xl p-3 mt-2 rounded bg-[#0C0C0D]">
@@ -496,7 +496,7 @@ export default function WebDevelopment() {
         {
             title: "Advance DevOps",
             content: (
-                <div>
+                <div className="text-white">
                     {advancedDevOpsRoadmap.map((section, index) => (
                         <Collapsible key={index}>
                             <CollapsibleTrigger className="text-xl p-3 mt-2 rounded bg-[#0C0C0D]">
@@ -532,7 +532,7 @@ export default function WebDevelopment() {
         {
             title: "Projects",
             content: (
-                <div>
+                <div className="text-white">
                     {projectsAndPortfolioRoadmap.map((section, index) => (
                         <Collapsible key={index}>
                             <CollapsibleTrigger className="text-xl p-3 mt-2 rounded bg-[#0C0C0D]">
@@ -567,8 +567,12 @@ export default function WebDevelopment() {
         },
     ];
     return (
-        (<div className="dark w-full bg-black">
-            <Timeline className="bg-black" data={data} />
-        </div>)
+        (
+            <div className="dark bg-grid-white/[0.1] w-full bg-black">
+                <Timeline className="bg-black" data={data}
+                    title="Web Development Roadmap"
+                    description="Explore frontend and backend development, mastering technologies like HTML, CSS, JavaScript, React, Node.js, databases, and deployment strategies for full-stack expertise."
+                />
+            </div>)
     );
 }

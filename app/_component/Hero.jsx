@@ -133,7 +133,7 @@ const HeroSection = () => {
 
                 {/* Text with Gradient */}
                 <TextGenerateEffect
-                    className={'text-4xl w-3/5 text-center sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 '}
+                    className={'text-4xl w-3/5 text-center sm:text-6xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 '}
                     words="Your AI-Powered Guide to Tech Success" />
 
                 <p className='text-2xl w-1/2 text-center  relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-2'>Master interviews, follow expert roadmaps, and stay ahead in tech trends—all in one place.</p>
