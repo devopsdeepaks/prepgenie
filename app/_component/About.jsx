@@ -6,8 +6,10 @@ import { CodeBlock } from '@/components/ui/code-block';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import { InfiniteLogoScroll } from '@/components/ui/infinite-logo';
 import { SparklesPreview } from './SparklesPreview';
+import { useRouter } from 'next/navigation';
 
 const About = () => {
+    const router = useRouter();
     const code = `function prepForSuccess(candidate) { 
         let skills = ["AI Mock Interviews", "Roadmaps", "Tech Trends"];
         let confidence = Math.random() > 0.5 ? "High" : "Needs Work";
@@ -66,6 +68,7 @@ const About = () => {
                             initial={{ scale: 1 }}
                             whileHover={{ scale: 1.1 }}
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            onClick={() => router.push('/dashboard')}
                         >
                             Start Preparing Today
                         </motion.button>

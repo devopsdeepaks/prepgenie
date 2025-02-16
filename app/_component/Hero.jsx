@@ -1,7 +1,7 @@
 "use client"
 import { UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { animate, motion } from 'framer-motion'
 import { Spotlight } from '@/components/ui/Spotlight'
@@ -11,6 +11,7 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { AlertOctagonIcon, ArrowRight, ArrowUpLeftFromSquareIcon } from 'lucide-react'
 import { InfiniteLogoScroll } from '@/components/ui/infinite-logo'
 const HeroSection = () => {
+    const router = useRouter();
     return (
         <div className='bg-black' >
             {/* Hero Section */}
@@ -30,19 +31,10 @@ const HeroSection = () => {
                 <motion.img
                     src="/img1.png"
                     alt="Floating Left Image"
-                    className="absolute top-[5%] left-[-10%] w-[400px] opacity-80"
-                    initial={{ x: -200, scale: 0.5 }}  // Starting position from the left and smaller scale
-                    animate={{
-                        x: 0,
-                        scale: 1,
-                        y: [0, -5, 0]  // Floating animation
-                    }}
-                    transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut"
-                    }}
+                    className="absolute top-[0%] left-[-10%] w-[400px] opacity-80"
+                    initial={{ x: -10, y: -10 }}
+                    animate={{ x: 10, y: 10 }}
+                    transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
                     whileHover={{ scale: 1.05 }}
                 />
 
@@ -101,18 +93,9 @@ const HeroSection = () => {
                     src="/img7.png"
                     alt="Floating Right Image"
                     className="absolute top-[75%] right-[-1%] w-[300px] opacity-80"
-                    initial={{ x: 200, scale: 0.5 }}  // Starting position from right and smaller scale
-                    animate={{
-                        x: 0,
-                        scale: 1,
-                        y: [0, 5, 0]  // Floating animation
-                    }}
-                    transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut"
-                    }}
+                    initial={{ x: 20, y: 0, scale: 1 }}
+                    animate={{ x: 0, y: [0, 5, 0], scale: [1, 1.05, 1] }}
+                    transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
                     whileHover={{ scale: 1.05 }}
                 />
 
@@ -143,6 +126,7 @@ const HeroSection = () => {
                     initial={{ scale: 1 }}
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    onClick={() => router.push('/dashboard')}
                 >
                     Start Preparing Today
                 </motion.button>
