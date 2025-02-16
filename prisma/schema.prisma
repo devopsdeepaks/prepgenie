@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tweet {
+  id          String   @id @default(cuid()) // Unique ID
+  userId      String   // Clerk ya custom user ID
+  username    String   // User ka username
+  githubRepo  String   // GitHub repository ka link
+  problemDesc String   // Problem description
+  createdAt   DateTime @default(now()) // Auto timestamp
+}
