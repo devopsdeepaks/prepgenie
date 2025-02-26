@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { SparklesPreview } from "./SparklesPreview";
+import { CheckoutButton } from "./checkoutButton";
 
 export default function Pricing() {
     const plans = [
@@ -18,8 +19,6 @@ export default function Pricing() {
                 { text: "Customize Roadmaps", available: false },
                 { text: "80+ ATS Resume", available: false },
                 { text: "On Demand Features", available: false },
-
-
 
             ],
             buttonText: "Get Started",
@@ -56,6 +55,8 @@ export default function Pricing() {
         },
     ];
 
+    
+
     return (
         <div className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white -mt-20 pb-10">
             {/* Pricing Heading */}
@@ -84,9 +85,19 @@ export default function Pricing() {
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.2 }}
                             className="bg-white text-black font-semibold py-3 px-5 w-full mt-6 rounded-xl shadow-md hover:bg-gray-200"
+                            onClick={() => handlePayment(plan.price)}
                         >
                             {plan.buttonText}
                         </motion.button>
+
+                         {/* Checkout Button */}
+                        {plan.price > 0 ? (
+                            <CheckoutButton amount={plan.price} />
+                        ) : (
+                            <button className="bg-gray-500 text-white font-semibold py-3 px-5 w-full mt-6 rounded-xl shadow-md cursor-not-allowed">
+                                Free Plan Activated
+                            </button>
+                        )}
 
                         {/* Features List */}
                         <div className="border-t text-left  border-gray-700 mt-8 pt-5">

@@ -2,8 +2,6 @@ import { SignIn } from '@clerk/nextjs'
 
 export default function Page() {
     return (
-
-
         < section className="bg-black dark bg-grid-white/[0.1]" >
             <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
                 <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
@@ -13,6 +11,7 @@ export default function Page() {
                         className="absolute inset-0 h-full w-full object-cover opacity-80"
                     />
 
+                     
                     <div className="hidden lg:relative lg:block lg:p-12">
                         <a className="block text-white" href="#">
                             <span className="sr-only">Home</span>
@@ -105,8 +104,6 @@ export default function Page() {
                                 },
                             }}
                         />
-
-
                     </div>
                 </main>
             </div>
