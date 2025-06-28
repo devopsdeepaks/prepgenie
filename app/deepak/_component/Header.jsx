@@ -1,12 +1,13 @@
 "use client"
 import { UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { animate, motion } from 'framer-motion'
 import React from 'react'
 
 const Header = () => {
     const path = usePathname();
+    const router = useRouter();
     return (
         <motion.div
             initial={{ scale: 0.5 }}
@@ -54,7 +55,8 @@ const Header = () => {
                 </ul>
                 <motion.button
                     className='bg-white text-black py-4 px-8 font-bold rounded-lg'
-                    whileHover={{ scale: 1.1 }}>
+                    whileHover={{ scale: 1.0 }}
+                    onClick={() => router.push("/sign-in")}>
                     Sign In</motion.button>
             </motion.div >
         </motion.div>

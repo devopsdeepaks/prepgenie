@@ -83,7 +83,8 @@ const Header = () => {
                 /></motion.div> :
                     <motion.button
                         className='bg-white text-black py-4 px-8 font-bold rounded-lg'
-                        whileHover={{ scale: 1.1 }}>
+                        whileHover={{ scale: 1.1 }}
+                        onClick={() => router.push("/sign-in")}>
                         Sign In</motion.button>}
             </motion.div >
         </motion.div>
