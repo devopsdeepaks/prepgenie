@@ -37,7 +37,7 @@ const About = () => {
         <div className='pt-5 bg-black' id='about'>
 
             {/* lamp my favourtite  */}
-            <div className=' flex flex-col items-center justify-center bg-black '>
+            <div className=' flex flex-row sm:flex-col items-center justify-center bg-black '>
                 <motion.div>
                     <motion.img
                         className='items-center justify-center w-2/3 mx-auto'

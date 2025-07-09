@@ -25,13 +25,13 @@ const HeroSection = () => {
             </div>
 
             {/* Content of hero Section  */}
-            <motion.div className='flex p-16 justify-center items-center h-screen flex-col'>
+            <motion.div className='flex px-2 sm:px-16 justify-center items-center min-h-screen flex-col text-center'>
 
                 {/* Floating Left Images  */}
                 <motion.img
                     src="/img1.png"
                     alt="Floating Left Image"
-                    className="absolute top-[0%] left-[-10%] w-[400px] opacity-80"
+                    className="absolute top-[0%] left-[-10%] w-[400px] opacity-80 hidden sm:block"
                     initial={{ x: -10, y: -10 }}
                     animate={{ x: 10, y: 10 }}
                     transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
@@ -42,7 +42,7 @@ const HeroSection = () => {
                 <motion.img
                     src="/img2.svg"
                     alt="Floating Left Image"
-                    className="absolute top-[30%] left-[-0%] w-[400px] opacity-80"
+                    className="absolute top-[30%] left-[-0%] w-[400px] opacity-80 hidden sm:block"
                     initial={{ x: -10, y: -10 }}
                     animate={{ x: 10, y: 10 }}
                     transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
@@ -52,7 +52,7 @@ const HeroSection = () => {
                 <motion.img
                     src="/img4.png"
                     alt="Floating Left Image"
-                    className="absolute top-[60%] left-[10%] w-[400px] opacity-80 h-[300px]"
+                    className="absolute top-[60%] left-[10%] w-[400px] opacity-80 h-[300px] hidden sm:block"
                     initial={{ rotate: 0, y: 0 }}
                     animate={{ rotate: [0, 2, -2, 0], y: [-5, 0, 5] }}
                     transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
@@ -63,7 +63,7 @@ const HeroSection = () => {
                 <motion.img
                     src="/img5.svg"
                     alt="Floating Right Image"
-                    className="absolute top-[2%] right-[-5%] w-[200px] h-[200px] opacity-80"
+                    className="absolute top-[2%] right-[-5%] w-[200px] h-[200px] opacity-80 hidden sm:block"
                     initial={{ x: 20, y: 0 }}
                     animate={{ x: 0, y: [0, 5, 0] }}
                     transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
@@ -72,7 +72,7 @@ const HeroSection = () => {
                 <motion.img
                     src="/img3.png"
                     alt="Floating Right Image"
-                    className="absolute top-[0%] right-[10%] w-[200px] h-[200px] opacity-80"
+                    className="absolute top-[0%] right-[10%] w-[200px] h-[200px] opacity-80 hidden sm:block"
                     initial={{ x: -10, y: 0 }}
                     animate={{ x: [10, -10, 10], y: 0 }}
                     transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
@@ -82,7 +82,7 @@ const HeroSection = () => {
                 <motion.img
                     src="/img6.svg"
                     alt="Floating Right Image"
-                    className="absolute top-[30%] right-[-4%] w-[400px] opacity-80"
+                    className="absolute top-[30%] right-[-4%] w-[400px] opacity-80 hidden sm:block"
                     initial={{ x: 20, y: 0, scale: 1 }}
                     animate={{ x: 0, y: [0, 5, 0], scale: [1, 1.05, 1] }}
                     transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
@@ -92,7 +92,7 @@ const HeroSection = () => {
                 <motion.img
                     src="/img7.png"
                     alt="Floating Right Image"
-                    className="absolute top-[75%] right-[-1%] w-[300px] opacity-80"
+                    className="absolute top-[75%] right-[-1%] w-[300px] opacity-80 hidden sm:block"
                     initial={{ x: 20, y: 0, scale: 1 }}
                     animate={{ x: 0, y: [0, 5, 0], scale: [1, 1.05, 1] }}
                     transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
@@ -105,7 +105,7 @@ const HeroSection = () => {
                     <span className="absolute inset-0 overflow-hidden rounded-full">
                         <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     </span>
-                    <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-2 px-8 ring-1 ring-white/10 ">
+                    <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-2 px-4 sm:px-8 ring-1 ring-white/10 ">
                         <span className='text-lg'>
                             Manage projects end-to-end
                         </span>
@@ -116,10 +116,10 @@ const HeroSection = () => {
 
                 {/* Text with Gradient */}
                 <TextGenerateEffect
-                    className={'text-4xl w-3/5 text-center sm:text-6xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 '}
+                    className={'text-4xl w-full sm:w-3/5 text-center sm:text-6xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 '}
                     words="Your AI-Powered Guide to Tech Success" />
 
-                <p className='text-2xl w-1/2 text-center  relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-2'>Master interviews, follow expert roadmaps, and stay ahead in tech trends—all in one place.</p>
+                <p className='text-2xl w-full sm:w-1/2 text-center  relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-2'>Master interviews, follow expert roadmaps, and stay ahead in tech trends—all in one place.</p>
 
                 {/* cta button  */}
                 <motion.button className="bg-white text-black no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-lg px-8 py-4 text-lg font-semibold leading-6   inline-block mt-5 mb-2"
